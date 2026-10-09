@@ -1,4 +1,5 @@
 using TheSingularityWorkshop.HeadlessAi.Benchmarks;
+using Xunit;
 
 namespace TheSingularityWorkshop.HeadlessAi.Benchmarks.Tests;
 
