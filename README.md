@@ -32,9 +32,10 @@ A benchmark result is meaningful only when the workload, machine, runtime, build
 
 ## 🟢 04 See it in a minute
 
-Prerequisite: .NET 8 SDK. From the repository root:
+Prerequisite: .NET 8 SDK. Until the HeadlessAi alpha package is published, clone its source beside this repository; the CI workflow does this automatically:
 
 ```bash
+git clone --branch development https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.git dependencies/HeadlessAi
 dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
 dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
 dotnet test TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release
