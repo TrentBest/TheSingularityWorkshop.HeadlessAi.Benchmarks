@@ -10,6 +10,7 @@
 ## Build and verify
 
 ```bash
+mkdir -p dependencies
 git clone --branch development https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.git dependencies/HeadlessAi
 dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
 dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
