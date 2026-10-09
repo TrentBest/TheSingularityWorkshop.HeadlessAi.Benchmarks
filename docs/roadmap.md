@@ -10,6 +10,6 @@
 
 ## Next measurements
 - [ ] Record an initial verified baseline with environment details and raw artifacts.
-- [ ] Add workload variants for response sizes and request sizes with clear names.
+- [x] Add separately reported prompt-size and response-size workload variants; see [Measurement methodology](methodology.md).
 - [ ] Compare adapter invocation paths only where the workloads are genuinely equivalent.
 - [ ] Add a separate live endpoint measurement guide only if it can be done safely and without mixing provider latency into library overhead.
