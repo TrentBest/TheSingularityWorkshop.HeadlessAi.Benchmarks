@@ -60,7 +60,7 @@ BenchmarkDotNet will run the harness and write artifacts locally. A full benchma
 - No live provider calls in benchmarks or CI.
 - No performance numbers without a recorded run and environment.
 - Use Release builds and BenchmarkDotNet diagnostics.
-- Keep the fake response fixed so the measured code path remains comparable.
+- Keep each fake response deterministic and fixed for a given parameter case; record the prompt/response sizes when comparing runs.
 - Separate cold-start, allocation, and steady-state questions rather than mixing them into one claim.
 - NuGet publication is not a responsibility of this repository.
 
