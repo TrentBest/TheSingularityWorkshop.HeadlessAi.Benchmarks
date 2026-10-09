@@ -1,0 +1,41 @@
+name: Run BenchmarkDotNet Measurements
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: benchmarks
+      - uses: actions/checkout@v4
+        with:
+          repository: TrentBest/TheSingularityWorkshop.HeadlessAi
+          ref: development
+          path: benchmarks/dependencies/HeadlessAi
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Restore
+        working-directory: benchmarks
+        run: dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
+      - name: Build
+        working-directory: benchmarks
+        run: dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
+      - name: Run benchmark matrix
+        working-directory: benchmarks
+        run: dotnet run --project src/TheSingularityWorkshop.HeadlessAi.Benchmarks --configuration Release --no-build -- --filter '*' --artifacts ./BenchmarkDotNet.Artifacts
+      - name: Upload BenchmarkDotNet artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: headlessai-benchmarkdotnet-${{ github.run_id }}
+          path: benchmarks/BenchmarkDotNet.Artifacts/
+          if-no-files-found: warn
+          retention-days: 30
