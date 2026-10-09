@@ -3,36 +3,36 @@
 ## Requirements
 
 - .NET 8 SDK.
+- Git installed and available on PATH.
 - NuGet access to restore BenchmarkDotNet and test dependencies.
 - No provider credentials and no external AI endpoint access.
-- Until the alpha package is published, clone the HeadlessAi source into the expected sibling folder; CI does this automatically.
+
+The benchmark harness uses the HeadlessAi development source as a project dependency until the alpha package is available. GitHub Actions checks out that dependency automatically. On Windows, the repository's verification script bootstraps it locally.
 
 ## Build and verify
 
-Run these commands from the **repository root** (the folder containing `TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx`).
+### Windows PowerShell — one command
 
-### Windows PowerShell
+From the repository root, run:
 
 ```powershell
-# Run once if the dependencies\HeadlessAi folder does not exist yet.
-New-Item -ItemType Directory -Force dependencies | Out-Null
-git clone --branch development https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.git dependencies/HeadlessAi
-
-dotnet --list-sdks
-dotnet restore .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
-dotnet build .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
-dotnet test .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release
+.\eng\verify.ps1
 ```
 
-If `dependencies\HeadlessAi` already exists, do not clone it again; update that checkout with `git -C dependencies\HeadlessAi pull` instead. The benchmark project conditionally references this local source checkout. Without it, the project falls back to the alpha NuGet package, which may not be available from your configured package sources.
+The script safely clones the HeadlessAi development source into `dependencies\HeadlessAi` only when that expected checkout is absent, then restores, builds, and tests the solution. It does not delete or replace an unexpected existing dependency folder. To explicitly update an existing dependency checkout before verification, run:
+
+```powershell
+.\eng\verify.ps1 -UpdateDependency
+```
+
+Use `-Configuration Debug` if needed; the default is `Release`.
 
 ### Visual Studio
 
 1. Open `TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx` from the repository root, rather than opening the benchmark `.csproj` by itself.
-2. In Solution Explorer, right-click the **solution** and choose **Restore NuGet Packages**.
-3. Wait for restore to finish, then build the solution in **Release** configuration.
-4. If Visual Studio reports `NETSDK1004` for `obj\project.assets.json`, restore did not complete for that project. Check the **Output** window's **Package Manager** / restore messages for the first underlying error; the missing assets file is a symptom, not the original cause.
-5. Confirm the local HeadlessAi checkout exists at `dependencies\HeadlessAi\src\TheSingularityWorkshop.HeadlessAi\TheSingularityWorkshop.HeadlessAi.csproj`. If it does not, follow the PowerShell setup above, then restore again.
+2. If the local dependency has not been bootstrapped, run `eng\verify.ps1` once from PowerShell. This ensures the source dependency exists and performs restore/build/test together.
+3. In Solution Explorer, right-click the **solution** and choose **Restore NuGet Packages**; then build the solution in **Release** configuration.
+4. If Visual Studio still reports `NETSDK1004` for `obj\project.assets.json`, restore did not complete for that project. Check the **Output** window's **Package Manager** / restore messages for the first underlying error; the missing assets file is a symptom, not the original cause.
 
 ## Execute
 
