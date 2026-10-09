@@ -5,10 +5,12 @@
 - .NET 8 SDK.
 - NuGet access to restore BenchmarkDotNet and test dependencies.
 - No provider credentials and no external AI endpoint access.
+- Until the alpha package is published, clone the HeadlessAi source into the expected sibling folder; CI does this automatically.
 
 ## Build and verify
 
 ```bash
+git clone --branch development https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.git dependencies/HeadlessAi
 dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
 dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
 dotnet test TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release
