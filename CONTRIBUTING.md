@@ -4,10 +4,12 @@ Contributions should improve reproducibility, measurement clarity, or responsibl
 
 ## Verify locally
 
+Before restoring, ensure the HeadlessAi source checkout exists at `dependencies/HeadlessAi`; see [Run benchmarks](docs/usage.md) for the one-time setup.
+
 ```bash
-dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
-dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
-dotnet test TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release
+dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.sln
+dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.sln --configuration Release --no-restore
+dotnet test TheSingularityWorkshop.HeadlessAi.Benchmarks.sln --configuration Release
 ```
 
 Run the actual benchmark explicitly when ready:
