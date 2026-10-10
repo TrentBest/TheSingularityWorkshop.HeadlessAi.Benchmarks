@@ -20,12 +20,12 @@ Do not clone over an existing folder.
 From the repository root:
 
 ```powershell
-dotnet restore .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
-dotnet build .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
-dotnet test .\TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-build
+dotnet restore .\TheSingularityWorkshop.HeadlessAi.Benchmarks.sln
+dotnet build .\TheSingularityWorkshop.HeadlessAi.Benchmarks.sln --configuration Release --no-restore
+dotnet test .\TheSingularityWorkshop.HeadlessAi.Benchmarks.sln --configuration Release --no-build
 ```
 
-The same solution can be opened in Visual Studio. Restore NuGet packages, then build the solution in **Release** configuration. If Visual Studio reports `NETSDK1004` for `obj\project.assets.json`, restore did not complete; check the first restore error in the Output window.
+Open `TheSingularityWorkshop.HeadlessAi.Benchmarks.sln` in Visual Studio. Restore NuGet packages, then build the solution in **Release** configuration. If Visual Studio reports `NETSDK1004` for `obj\project.assets.json`, restore did not complete; check the first restore error in the Output window.
 
 ## Run measurements
 
