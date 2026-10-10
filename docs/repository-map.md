@@ -3,7 +3,7 @@
 - README.md: purpose, quick start, measurement scope, and reader path.
 - DOCUMENTATION_STANDARD.md: local application of Workshop documentation rules.
 - DOCUMENTATION_INDEX.md: guided document directory.
-- TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx: benchmark and test solution.
+- TheSingularityWorkshop.HeadlessAi.Benchmarks.sln: standard Visual Studio solution containing the benchmark and test projects.
 - src/: BenchmarkDotNet workload and fixed in-memory HTTP handler.
 - tests/: fixture test for the benchmark workload.
 - docs/usage.md: build, run, and artifact instructions.
