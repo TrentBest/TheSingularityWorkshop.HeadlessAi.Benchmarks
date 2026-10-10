@@ -24,10 +24,10 @@ jobs:
           dotnet-version: 8.0.x
       - name: Restore
         working-directory: benchmarks
-        run: dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx
+        run: dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.sln
       - name: Build
         working-directory: benchmarks
-        run: dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.slnx --configuration Release --no-restore
+        run: dotnet build TheSingularityWorkshop.HeadlessAi.Benchmarks.sln --configuration Release --no-restore
       - name: Run benchmark matrix
         working-directory: benchmarks
         run: dotnet run --project src/TheSingularityWorkshop.HeadlessAi.Benchmarks --configuration Release --no-build -- --filter '*' --artifacts ./BenchmarkDotNet.Artifacts
