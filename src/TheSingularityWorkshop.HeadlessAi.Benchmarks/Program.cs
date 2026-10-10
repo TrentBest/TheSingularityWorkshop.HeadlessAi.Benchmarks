@@ -5,5 +5,5 @@ namespace TheSingularityWorkshop.HeadlessAi.Benchmarks;
 internal static class Program
 {
     private static void Main(string[] args)
-        => BenchmarkRunner.Run<HeadlessAiInvocationBenchmarks>(args);
+        => BenchmarkSwitcher.FromAssembly(typeof(HeadlessAiInvocationBenchmarks).Assembly).Run(args);
 }
