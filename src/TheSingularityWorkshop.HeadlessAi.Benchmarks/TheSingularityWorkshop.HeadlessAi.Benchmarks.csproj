@@ -5,14 +5,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <HeadlessAiProject>../../dependencies/HeadlessAi/src/TheSingularityWorkshop.HeadlessAi/TheSingularityWorkshop.HeadlessAi.csproj</HeadlessAiProject>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
   </ItemGroup>
-  <ItemGroup Condition="Exists('../../dependencies/HeadlessAi/src/TheSingularityWorkshop.HeadlessAi/TheSingularityWorkshop.HeadlessAi.csproj')">
-    <ProjectReference Include="../../dependencies/HeadlessAi/src/TheSingularityWorkshop.HeadlessAi/TheSingularityWorkshop.HeadlessAi.csproj" />
+  <ItemGroup Condition="Exists('$(HeadlessAiProject)')">
+    <ProjectReference Include="$(HeadlessAiProject)" />
   </ItemGroup>
-  <ItemGroup Condition="!Exists('../../dependencies/HeadlessAi/src/TheSingularityWorkshop.HeadlessAi/TheSingularityWorkshop.HeadlessAi.csproj')">
-    <PackageReference Include="TheSingularityWorkshop.HeadlessAi" Version="0.1.0-alpha.1" />
-  </ItemGroup>
+  <Target Name="ValidateHeadlessAiSourceDependency" BeforeTargets="PrepareForBuild" Condition="!Exists('$(HeadlessAiProject)')">
+    <Error Text="HeadlessAi source dependency is missing. From the benchmark repository root, run: git clone --branch development https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.git ./dependencies/HeadlessAi (PowerShell: .\dependencies\HeadlessAi). The alpha package is not published to NuGet yet." />
+  </Target>
 </Project>
