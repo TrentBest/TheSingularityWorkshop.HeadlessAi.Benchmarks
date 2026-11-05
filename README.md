@@ -5,6 +5,7 @@
 [![Build](https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.Benchmarks/actions/workflows/build.yml/badge.svg?branch=development)](https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.Benchmarks/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+[![Sith Policy](assets/sith-policy.svg)](https://github.com/TrentBest/TheSingularityWorkshop.HeadlessAi.Benchmarks/actions/workflows/sith-policy.yml)
 <p align="center"><img src="docs/assets/headlessai-benchmark-scope.svg" alt="A BenchmarkDotNet harness sends repeatable requests through HeadlessAi to an in-memory HTTP handler. It measures local invocation overhead, not model inference or internet latency." width="100%"></p>
 <p align="center"><em>Measure the boundary you own. Do not confuse it with the model you call.</em></p>
 
