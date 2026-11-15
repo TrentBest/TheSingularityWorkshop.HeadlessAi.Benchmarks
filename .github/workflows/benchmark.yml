@@ -21,7 +21,7 @@ jobs:
           path: benchmarks/dependencies/HeadlessAi
       - uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: 10.0.x
       - name: Restore
         working-directory: benchmarks
         run: dotnet restore TheSingularityWorkshop.HeadlessAi.Benchmarks.sln
