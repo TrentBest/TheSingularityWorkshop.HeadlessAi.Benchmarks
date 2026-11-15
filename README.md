@@ -35,7 +35,7 @@ A benchmark result is meaningful only when the workload, machine, runtime, build
 
 ## 🟢 04 See it in a minute
 
-Prerequisite: .NET 8 SDK. Open `TheSingularityWorkshop.HeadlessAi.Benchmarks.sln` in Visual Studio, or use the commands below. Until the HeadlessAi alpha package is published, clone its source into `dependencies/HeadlessAi`; the CI workflow does this automatically:
+Prerequisite: .NET 10 SDK. Open `TheSingularityWorkshop.HeadlessAi.Benchmarks.sln` in Visual Studio, or use the commands below. Until the HeadlessAi alpha package is published, clone its source into `dependencies/HeadlessAi`; the CI workflow does this automatically:
 
 ```bash
 mkdir -p dependencies
